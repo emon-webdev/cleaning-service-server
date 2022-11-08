@@ -1,0 +1,65 @@
+[
+  {
+    "picture": "https://i.ibb.co/7rGr5kW/service1.png",
+    "price": 3197,
+    "rating": 5,
+    "name": "House Cleaning",
+    "about": "Nulla Lorem Lorem aliquip id ullamco incididunt id ipsum irure voluptate. Aute deserunt duis et eiusmod est nisi adipisicing minim cupidatat culpa eu laboris Lorem. \r\n"
+  },
+  {
+    "picture": "https://i.ibb.co/1dMWdgC/service2.png",
+    "price": 1311,
+    "rating": 0,
+    "name": "Office Cleaning",
+    "about": "Nulla Lorem Lorem aliquip id ullamco incididunt id ipsum irure voluptate. Aute deserunt duis et eiusmod est nisi adipisicing minim cupidatat culpa eu laboris Lorem. \r\n"
+  },
+  {
+    "picture": "https://i.ibb.co/6JtZqyY/service3.png",
+    "price": 1469,
+    "rating": 5,
+    "name": "Laundry Service",
+    "about": "Incididunt nulla adipisicing consectetur veniam eu. Sunt id dolor officia amet. Quis nisi ea sit elit ut.\r\n"
+  },
+  {
+    "picture": "https://i.ibb.co/hWLStzN/service9.png",
+    "price": 2333,
+    "rating": 4,
+    "name": "Garden Cleaning",
+    "about": "Nulla Lorem Lorem aliquip id ullamco incididunt id ipsum irure voluptate. Aute deserunt duis et eiusmod est nisi adipisicing minim cupidatat culpa eu laboris Lorem. \r\n"
+  },
+  {
+    "picture": "https://i.ibb.co/kXH9d2n/service4.png",
+    "price": 3503,
+    "rating": 3,
+    "name": "Furniture Cleaning",
+    "about": "Officia mollit mollit ad dolore ullamco quis officia consectetur id. Magna qui et reprehenderit adipisicing consectetur ea nisi laborum nostrud proident reprehenderit. Anim anim incididunt commodo veniam do.\r\n"
+  },
+  {
+    "picture": "https://i.ibb.co/rbgG3h8/service5.png",
+    "price": 2636,
+    "rating": 2,
+    "name": "Cloth Cleaning",
+    "about": "Nulla Lorem Lorem aliquip id ullamco incididunt id ipsum irure voluptate. Aute deserunt duis et eiusmod est nisi adipisicing minim cupidatat culpa eu laboris Lorem. \r\n"
+  },
+  {
+    "picture": "https://i.ibb.co/PGMDkV7/service6.png",
+    "price": 2113,
+    "rating": 4,
+    "name": "Car Cleaning",
+    "about": "Nulla Lorem Lorem aliquip id ullamco incididunt id ipsum irure voluptate. Aute deserunt duis et eiusmod est nisi adipisicing minim cupidatat culpa eu laboris Lorem. \r\n"
+  },
+  {
+    "picture": "https://i.ibb.co/yWXDhpm/service7.png",
+    "price": 2669,
+    "rating": 4,
+    "name": "Store Cleaning",
+    "about": "Nulla Lorem Lorem aliquip id ullamco incididunt id ipsum irure voluptate. Aute deserunt duis et eiusmod est nisi adipisicing minim cupidatat culpa eu laboris Lorem. \r\n"
+  },
+  {
+    "picture": "https://i.ibb.co/C8NRJ8J/service8.png",
+    "price": 2333,
+    "rating": 4,
+    "name": "Ground Cleaning",
+    "about": "Nulla Lorem Lorem aliquip id ullamco incididunt id ipsum irure voluptate. Aute deserunt duis et eiusmod est nisi adipisicing minim cupidatat culpa eu laboris Lorem. \r\n"
+  }
+]
