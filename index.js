@@ -39,6 +39,7 @@ async function run() {
       const services = await cursor.limit(3).toArray();
       res.send(services);
     });
+
     //all services
     app.get("/services", async (req, res) => {
       const query = {};
@@ -49,9 +50,7 @@ async function run() {
     //single services api call
     app.get("/services/:id", async (req, res) => {
       const id = req.params.id;
-      console.log(id)
       const query = { _id: ObjectId(id) };
-      console.log(query)
       const service = await servicesCollection.findOne(query);
       res.send(service);
     });
@@ -61,7 +60,7 @@ async function run() {
 run().catch(console.dir);
 
 app.get("/", (req, res) => {
-  res.send("Cleaning Service is Running");
+  res.send("Cleaning Service is Running...");
 });
 
 app.listen(Port, () => {
