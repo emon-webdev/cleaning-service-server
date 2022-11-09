@@ -8,7 +8,6 @@ const Port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-
 const uri = `mongodb+srv://${process.env.USER_NAME}:${process.env.USER_PASSWORD}@cluster0.m61comp.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
@@ -42,6 +41,14 @@ async function run() {
       const service = await servicesCollection.findOne(query);
       res.send(service);
     });
+
+    //add services
+    app.post("/service", async (req, res) => {
+      const service = req.body;
+      const result = await servicesCollection.insertOne(service);
+      console.log(result)
+      res.send(result)
+    });
   } finally {
   }
 }
@@ -54,10 +61,3 @@ app.get("/", (req, res) => {
 app.listen(Port, () => {
   console.log(`Cleaning Service is Running  ${Port}`);
 });
-     
-
-
-
-
-
-
