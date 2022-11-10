@@ -29,25 +29,31 @@ async function run() {
       res.send({ token });
     });
 
+    //add services from add service com__
+    app.post("/service", async (req, res) => {
+      const service = req.body;
+      const result = await servicesCollection.insertOne(service);
+
+      res.send(result);
+    });
+
     //home services
     app.get("/services/ShortService", async (req, res) => {
       const query = {};
-      const cursor = servicesCollection.find(query, {sort:{_id:-1}});
+      const cursor = servicesCollection.find(query, { sort: { _id: -1 } });
       const services = await cursor.limit(3).toArray();
       res.send(services);
     });
 
-
-    //all services
+    //all services for service component
     app.get("/services", async (req, res) => {
       const query = {};
-      const cursor = servicesCollection.find(query, {sort:{_id:-1}});
+      const cursor = servicesCollection.find(query, { sort: { _id: -1 } });
       const services = await cursor.toArray();
       res.send(services);
     });
 
-
-    //single services api call
+    //single services for service details com__
     app.get("/services/:id", async (req, res) => {
       const id = req.params.id;
       const query = { _id: ObjectId(id) };
@@ -55,59 +61,57 @@ async function run() {
       res.send(service);
     });
 
-    //add services
-    app.post("/service", async (req, res) => {
-      const service = req.body;
-      const result = await servicesCollection.insertOne(service);
-      console.log(result);
-      res.send(result);
-    });
+    /* ===========review collection =========*/
 
-    //review collection
+    //review add from service details com__
     app.post("/reviews", async (req, res) => {
       const review = req.body;
       const result = await reviewsCollection.insertOne(review);
-      console.log(result);
+
       res.send(result);
     });
 
-    //service review
+    // review load service id ways
     app.get("/reviews/:id", async (req, res) => {
       const id = req.params.id;
-      const query = {serviceId: id};
+      const query = { serviceId: id };
       const cursor = reviewsCollection.find(query);
       const reviews = await cursor.toArray();
       res.send(reviews);
     });
 
-
-    //my user  review
+    //my user  review for my reviews
     app.get("/userReviews/:uid", async (req, res) => {
       const uid = req.params.uid;
-      const query = {uid: uid};
+      const query = { uid: uid };
       const cursor = reviewsCollection.find(query);
       const reviews = await cursor.toArray();
       res.send(reviews);
     });
 
-
-
-    //delete review
+    //delete review from my reviews
     app.delete("/reviews/:id", async (req, res) => {
       const id = req.params.id;
       const query = { _id: ObjectId(id) };
       const result = await reviewsCollection.deleteOne(query);
-      console.log(result);
+
       res.send(result);
     });
 
+    //all Review
+    app.get("/reviews", async (req, res) => {
+      const query = {};
+      const cursor = reviewsCollection.find(query);
+      const review = await cursor.toArray();
+      res.send(review);
+    });
 
-
-    //update er jonno single review fetch
-    app.get("/reviews/:id", async (req, res) => {
+    //update single review for update component
+    app.get("/singleReviews/:id", async (req, res) => {
       const id = req.params.id;
       const query = { _id: ObjectId(id) };
       const result = await reviewsCollection.findOne(query);
+
       res.send(result);
     });
 
@@ -115,8 +119,19 @@ async function run() {
     app.put("/reviews/:id", async (req, res) => {
       const id = req.params.id;
       const query = { _id: ObjectId(id) };
-      const updatedReview = req.body;
-      console.log(updatedReview)
+      const oldReview = req.body;
+      const option = { upsert: true };
+      const updatedReview = {
+        $set: {
+          review: oldReview,
+        },
+      };
+      const result = await reviewsCollection.updateOne(
+        query,
+        updatedReview,
+        option
+      );
+      res.send(result);
     });
   } finally {
   }
@@ -131,7 +146,4 @@ app.listen(Port, () => {
   console.log(`Cleaning Service is Running  ${Port}`);
 });
 
-
 // module.exports = app;
-
-
