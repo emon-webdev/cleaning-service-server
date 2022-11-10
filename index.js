@@ -16,6 +16,22 @@ const client = new MongoClient(uri, {
   serverApi: ServerApiVersion.v1,
 });
 
+function verifyJwt(req, res, next) {
+  const authReview = req.headers.authorization;
+  if (!authReview) {
+    return res.status(401).res.send({ message: "unauthorized access" });
+  }
+  const token = authReview.split(" ")[1];
+  console.log(req, headers.authorization);
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, function (err, decoded) {
+    if (err) {
+      return res.status(401).res.send({ message: "unauthorized access" });
+    }
+    req.decoded = decoded;
+    next();
+  });
+}
+
 async function run() {
   try {
     const servicesCollection = client.db("clean-service").collection("service");
@@ -33,7 +49,6 @@ async function run() {
     app.post("/service", async (req, res) => {
       const service = req.body;
       const result = await servicesCollection.insertOne(service);
-
       res.send(result);
     });
 
@@ -81,7 +96,12 @@ async function run() {
     });
 
     //my user  review for my reviews
-    app.get("/userReviews/:uid", async (req, res) => {
+    app.get("/userReviews/:uid", verifyJwt, async (req, res) => {
+      console.log(req.headers.authorization);
+
+      const decoded = req.decoded;
+      console.log('inside review api', decoded);
+
       const uid = req.params.uid;
       const query = { uid: uid };
       const cursor = reviewsCollection.find(query);
